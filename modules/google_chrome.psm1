@@ -1,11 +1,13 @@
-if (!(Get-Command -Name "C:\Program Files\Google\Chrome\Application\chrome.exe" -ErrorAction SilentlyContinue)) {
+$exePath = "$env:ProgramFiles\Google\Chrome\Application\chrome.exe"
+
+if (!(Get-Command -Name $exePath -ErrorAction SilentlyContinue)) {
   Write-Host "Google Chrome is not installed" -ForegroundColor Yellow
 }
 else {
   Function ExecChrome {
-    $chrome = "C:\Program Files\Google\Chrome\Application\chrome.exe"
+    $chrome = $exePath
     $chromeArgs = @(
-      "--user-data-dir=C:\Users\grego\Documents\data"
+      "--user-data-dir=$env:USERPROFILE\Documents\data"
       "--no-default-browser-check"
       "--disable-popup-blocking"
       "--disable-sync"
