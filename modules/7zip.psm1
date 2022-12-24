@@ -28,7 +28,6 @@ else {
         "$name.$Extension"
       )
       Start-Process -FilePath $exePath -ArgumentList $7zArgs -Wait
-      # Check if the file was created
       if (!(Test-Path "$name.7z")) {
         return Write-Host "$name.$Extension compression failed" -ForegroundColor Red
       }
