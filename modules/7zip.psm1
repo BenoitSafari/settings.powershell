@@ -11,29 +11,18 @@ else {
       [string]$Extension
     )
     
-    $files = Get-ChildItem -Path . -Filter "*.$Extension"
+    $files = Get-ChildItem -Name -Filter "*.$Extension"
     if ($files.Count -eq 0) {
       return Write-Host "No files found with extension '$Extension'" -ForegroundColor Yellow
     }
-    $files | ForEach-Object {
-      $name = $_.BaseName
-      $7zArgs = @(
-        "a"
-        "-t7z"
-        "-mx=9"
-        "-m0=lzma2"
-        "-mmt=on"
-        "-ms=on"
-        "$name.7z"
-        "$name.$Extension"
-      )
-      Start-Process -FilePath $exePath -ArgumentList $7zArgs -Wait
-      if (!(Test-Path "$name.7z")) {
-        return Write-Host "$name.$Extension compression failed" -ForegroundColor Red
+    foreach ($f in $files) {
+      $filename7z = "$f.7z"
+      Start-Process -FilePath $exePath -ArgumentList "a -t7z -mx=9 -m0=lzma2 -mmt=on -ms=on -sdel `"$filename7z`" `"$f`"" -Wait
+      if (!(Test-Path "$filename7z")) {
+        Write-Host "$f compression failed" -ForegroundColor Red
       }
       else {
-        Remove-Item -Path "$name.$Extension"
-        return Write-Host "$name.7z - Created" -ForegroundColor Green
+        Write-Host "$filename7z - Created" -ForegroundColor Green
       }
     }
   }
