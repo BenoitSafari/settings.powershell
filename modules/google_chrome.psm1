@@ -7,12 +7,14 @@ else {
   Function ExecChrome {
     $chrome = $exePath
     $chromeArgs = @(
+      "--incognito --app=http://localhost:8080"
       "--user-data-dir=$env:USERPROFILE\Documents\data"
       "--no-default-browser-check"
       "--disable-popup-blocking"
       "--disable-sync"
       "--disable-translate"
       "--disable-web-security"
+      "--lang=en_US"
     )
   
     Start-Process -FilePath $chrome -ArgumentList $chromeArgs -WindowStyle Hidden
