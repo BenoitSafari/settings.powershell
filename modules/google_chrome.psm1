@@ -7,7 +7,7 @@ else {
   Function ExecChrome {
     $chrome = $exePath
     $chromeArgs = @(
-      "--incognito --app=http://localhost:8080"
+      "--incognito --new-window http://localhost:8080"
       "--user-data-dir=$env:USERPROFILE\Documents\data"
       "--no-default-browser-check"
       "--disable-popup-blocking"
