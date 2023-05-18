@@ -4,9 +4,9 @@ if (!(Get-Command -Name $exePath -ErrorAction SilentlyContinue)) {
     Write-Host "7-Zip is not installed" -ForegroundColor Yellow
 }
 else {
-    Function CompressAll {
+    function CompressAll {
         [CmdletBinding()]
-        Param(
+        param(
             [Parameter(Mandatory = $true)]
             [string]$Extension
         )

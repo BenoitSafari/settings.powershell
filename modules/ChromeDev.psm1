@@ -4,11 +4,11 @@
 $ExePath = "$env:ProgramFiles\Google\Chrome\Application\chrome.exe"
 
 if (!(Get-Command -Name $ExePath -ErrorAction SilentlyContinue)) {
-    Write-Host "Google Chrome is not installed" -ForegroundColor Yellow
+    Write-Host "Google Chrome is not installed `nDownload it at https://www.google.com/intl/en/chrome/" -ForegroundColor Yellow
 }
 else {
     function ExecChrome {
-        Param(
+        param(
             [Parameter(Mandatory=$false)]
             [string]$Port = "8080",
             [bool]$Https = $false
