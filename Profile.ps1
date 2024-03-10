@@ -1,9 +1,9 @@
 $env:PWSH_PATH = "$env:USERPROFILE\.powershell"
+$env:NVS_HOME="$env:USERPROFILE\.nvs"
 
 # Items initialization
 Set-Item -Path Env:\POSH_THEME -Value "$env:PWSH_PATH\themes\material.json"
 oh-my-posh init pwsh --config $env:POSH_THEME | Invoke-Expression
-
 # PSReadLine initialization
 if (!(Get-Module -Name PSReadLine -ListAvailable)) {
     Install-Module PSReadLine -Force -SkipPublisherCheck -AcceptLicense
