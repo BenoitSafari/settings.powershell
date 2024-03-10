@@ -7,5 +7,5 @@
    ```
 - Insert the following line 
    ```
-   Import-Module "$env:USERPROFILE\.powershell\Init.ps1"
+   Import-Module "$env:USERPROFILE\.powershell\Profile.ps1"
    ```
